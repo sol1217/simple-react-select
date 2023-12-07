@@ -1,22 +1,21 @@
 import ReactDOM from "react-dom";
 import React, { useEffect } from "react";
+import {PortalContainer} from "./ReactPortal.elements";
+import {ModalPortalProps} from "./ReactPortal.types";
 
-import { PortalContainer } from "./ReactPortal.elements";
-import { ModalPortalProps } from "./ReactPortal.types";
+
 
 export const ModalPortal: React.FC<ModalPortalProps> = ({ children }) => {
-  const portalNode = document.createElement("div");
+  const portalNode = document.querySelector('#root');
 
   useEffect(() => {
-    document.body.appendChild(portalNode);
-
-    return () => {
-      portalNode.remove();
-    };
+    if (portalNode) {
+      document.body.appendChild(portalNode);
+    }
   }, [portalNode]);
 
-  return ReactDOM.createPortal(
+  return portalNode ? ReactDOM.createPortal(
     <PortalContainer>{children}</PortalContainer>,
     portalNode
-  );
+  ) : null
 };

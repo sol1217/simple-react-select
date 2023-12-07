@@ -45,6 +45,8 @@ export const ArrowContainer = styled.div<{ $isOpen: boolean }>`
 `;
 
 export const DropdownMenu = styled.div`
+  position: fixed;
+  margin-top: 8px;
   padding: 6px 0;
   width: 142px;
   border-radius: 10px;
@@ -59,6 +61,7 @@ export const DropdownMenuOption = styled.div`
   margin-bottom: 4px;
   padding: 6px 10px;
   user-select: none;
+  cursor: pointer;
 
   &:hover {
     background-color: rgba(0, 0, 0, 0.1);
